@@ -1,6 +1,7 @@
 "use client";
 
 import * as z from "zod";
+import { useTransition } from "react";
 import { useForm } from "react-hook-form";
 import { useState, useTransition } from "react";
 import { useSearchParams } from "next/navigation";
@@ -21,7 +22,7 @@ import { CardWrapper } from "@/components/auth/card-wrapper";
 import { Button } from "@/components/ui/button";
 import { FormError } from "./form-error";
 import { FormSuccess } from "./form-success";
-// import { login } from "@/actions/login";
+import { login } from "@/actions/login";
 
 export const LoginForm = () => {
   const searchParams = useSearchParams();
@@ -47,7 +48,7 @@ export const LoginForm = () => {
   const onSubmit = (values: z.infer<typeof LoginSchema>) => {
     // setError("");
     // setSuccess("");
-    console.log(values);
+    login(values);
   };
   // startTransition(() => {
   //   login(values, callbackUrl)
